@@ -1,0 +1,265 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef1f3;
+    color: #222;
+    overflow: hidden;
+}
+
+/* ── LAYOUT ── */
+.page-wrapper { height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 4px 0 20px rgba(0,0,0,.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar-top { display: flex; flex-direction: column; }
+
+.brand { padding: 24px 20px; }
+.brand-logo { width: 180px; max-width: 100%; display: block; }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px 20px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 16px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: #6aa84f;
+    color: #fff;
+}
+
+.sidebar-footer {
+    border-top: 1px solid #d8dde3;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    background: #fff;
+    min-height: 60px;
+    font-size: 0.88rem;
+}
+
+.logout-btn { color: #6aa84f; font-size: 20px; text-decoration: none; }
+.logout-btn:hover { color: #4f772d; }
+
+/* ── MAIN CONTENT ── */
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* ── MOBILE HEADER ── */
+.mobile-header {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    border-radius: 14px;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+}
+
+.mobile-logo { height: 38px; width: auto; }
+
+.burger-btn {
+    width: 42px; height: 42px;
+    border: none; background: transparent;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 6px;
+    cursor: pointer; padding: 0;
+}
+
+.burger-btn span { display: block; width: 26px; height: 3px; background: #222; border-radius: 3px; }
+
+/* ── TABLE CARD ── */
+.table-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.1);
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.table-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.table-top h2 { color: #333; font-size: 22px; }
+
+.table-top input {
+    width: 300px;
+    max-width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d7dce1;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.table-top input:focus { border-color: #6aa84f; }
+
+/* ── TABLE ── */
+.table-responsive {
+    flex: 1; min-height: 0;
+    overflow-y: auto; overflow-x: auto;
+}
+
+.table-responsive::-webkit-scrollbar { width: 8px; height: 8px; }
+.table-responsive::-webkit-scrollbar-thumb { background: #6aa84f; border-radius: 10px; }
+.table-responsive::-webkit-scrollbar-track { background: #edf1ea; }
+
+table { width: 100%; min-width: 700px; border-collapse: collapse; }
+
+thead { background: #6aa84f; color: #fff; }
+thead th {
+    padding: 16px 14px;
+    text-align: center;
+    font-size: 15px;
+    position: sticky; top: 0;
+    background: #6aa84f;
+    z-index: 2;
+}
+
+tbody td {
+    padding: 15px 14px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+tbody tr:hover { background: #fafcf8; }
+
+.empty-state { padding: 30px; color: #888; text-align: center; }
+
+/* ── ACTION BUTTONS ── */
+.action-cell { display: flex; justify-content: center; gap: 10px; }
+
+.view-btn, .print-btn {
+    border: none;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center; align-items: center;
+    color: #fff; cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+.view-btn:hover, .print-btn:hover { opacity: 0.85; }
+.view-btn  { background: #1e88e5; }
+.print-btn { background: #43a047; }
+
+/* ── OVERLAY ── */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: none; z-index: 999; }
+.overlay.show { display: block; }
+
+/* ── MODALS ── */
+.modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.35);
+    display: none;
+    justify-content: center; align-items: center;
+    padding: 20px; z-index: 2000;
+}
+.modal-overlay.show { display: flex; }
+
+.modal-box {
+    width: 100%; max-width: 440px;
+    background: #fff; border-radius: 18px;
+    padding: 24px; position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+.close-modal {
+    position: absolute; top: 12px; right: 16px;
+    border: none; background: none;
+    font-size: 32px; cursor: pointer;
+    color: #333; line-height: 1;
+}
+
+.modal-header { text-align: center; margin-bottom: 20px; }
+.modal-logo { width: 160px; max-width: 100%; margin-bottom: 10px; }
+.modal-header h3 { color: #548d35; font-size: 20px; }
+
+.modal-body p { margin: 10px 0; font-size: 16px; color: #333; }
+
+.modal-actions { margin-top: 20px; }
+
+.proceed-btn {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    width: 100%; text-align: center;
+    background: #6aa84f; color: #fff;
+    border: none; padding: 13px;
+    border-radius: 10px; font-weight: bold;
+    cursor: pointer; font-size: 15px;
+    transition: background 0.2s;
+}
+.proceed-btn:hover { background: #4f772d; }
+
+/* ── RECEIPT ── */
+.receipt-modal { max-width: 400px; }
+
+.receipt { max-width: 320px; margin: auto; font-size: 14px; }
+.receipt-header { text-align: center; margin-bottom: 10px; }
+.receipt-body p { margin: 6px 0; }
+.receipt-footer { text-align: center; margin-top: 12px; font-size: 13px; color: #666; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .mobile-header { display: flex; }
+
+    .sidebar { left: -280px; transition: left 0.3s ease; }
+    .sidebar.active { left: 0; }
+
+    .main-content { margin-left: 0; width: 100%; padding: 14px; }
+
+    .table-top { flex-direction: column; align-items: stretch; }
+    .table-top input { width: 100%; }
+
+    .table-card { flex: 1; min-height: 0; }
+}
